@@ -6,17 +6,17 @@
  */
 int binary_tree_is_full(const binary_tree_t *tree)
 {
-	int r = 1;
+	int l, r;
 
 	if (tree == NULL)
 		return (0);
-	if (r == 0)
-		return (r);
 	if ((!tree->left && tree->right) || (tree->left && !tree->right))
 		return (0);
 	if (!tree->left && !tree->right)
 		return (1);
-	r = binary_tree_is_full(tree->left);
+	l = binary_tree_is_full(tree->left);
 	r = binary_tree_is_full(tree->right);
-	return (r);
+	if (!l || !r)
+		return (0);
+	return (1);
 }
